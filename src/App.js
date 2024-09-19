@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 
@@ -14,12 +14,12 @@ export default function App() {
       <Router>
         <Header/>
         <main>
-            <Switch>
-              <Route exact path="/" component={Home}/>
-              <Route path="/about" component={About}/>
-              <Route path="/contacts" component={Contacts}/>
-              <Route component={Notfound}/>
-            </Switch>
+            <Routes>
+              <Route exact path="/" element={<Home/>}/>
+              <Route path="/about" element={<About/>}/>
+              <Route path="/contacts" element={<Contacts/>}/>
+              <Route element={<Notfound/>}/>
+            </Routes>
         </main>
         <Footer/>
       </Router>

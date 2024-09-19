@@ -12,18 +12,12 @@ export default function Header() {
                 </Link>
                 <ul id="nav-mobile" className="right hide-on-med-and-down">
                     <li>
-                        <Link
-                            to="/about"
-                            className="white-text"
-                        >
+                        <Link to="/about" className="white-text">
                             О проекте
                         </Link>
                     </li>
                     <li>
-                        <Link
-                            to="/contacts"
-                            className="white-text"
-                        >
+                        <Link to="/contacts" className="white-text">
                             Контакты
                         </Link>
                     </li>
@@ -31,6 +25,8 @@ export default function Header() {
                         <a
                             href="https://themealdb.com/api.php"
                             className="white-text"
+                            target="_blank"
+                            rel="noopener noreferrer"
                         >
                             API
                         </a>

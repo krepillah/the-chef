@@ -1,19 +1,20 @@
 import { useState, useEffect } from "react"
 import { getAllCategories } from "../api"
+import Preloader from "../components/Preloader";
+import CategoryList from "../components/CategoryList";
 
 export default function Home() {
     const [catalog, setCatalog] = useState([]);
 
     useEffect(() => {
-        
-        return () => {
-            
-        };
+        getAllCategories().then(data => {
+            setCatalog(data.categories)
+        })
     }, []);
 
     return (
-        <div>
-
-        </div>
+        <>
+        {!catalog.length ? <Preloader/>:<CategoryList catalog={catalog}/>}
+        </>
     )
 }

@@ -21,7 +21,7 @@ main{
   flex: 1;
 }
 
-.root{
+#root{
   height: 100%;
 }
 
