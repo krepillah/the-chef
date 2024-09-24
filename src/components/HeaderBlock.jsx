@@ -1,9 +1,24 @@
 import { Link} from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getAllCategories } from "../api";
 import { Layout, Menu} from "antd";
-import {  UserOutlined, MailOutlined, SettingOutlined  } from '@ant-design/icons';
+import {  SettingOutlined  } from '@ant-design/icons';
 
-export default function HeaderBlock({ catalog = [] }) {
+export default function HeaderBlock(props) {
+  const {catalog, setCatalog} = props;
     const { Header } = Layout;
+
+    useEffect(() => {
+      getAllCategories().then(data => {
+          setCatalog(data.categories)
+      })
+  }, []);
+
+  const [current, setCurrent] = useState('logo');
+  const onClick = (e) => {
+    console.log('click ', e);
+    setCurrent(e.key);
+  };
 
     const items = [
         {
@@ -20,7 +35,7 @@ export default function HeaderBlock({ catalog = [] }) {
         {
           label: (
             <Link to="/about" className="header-menu-item">
-              О проекте
+              About
             </Link>
           ),
           key: 'about',
@@ -28,22 +43,22 @@ export default function HeaderBlock({ catalog = [] }) {
         {
           label: (
             <Link to="/contacts" className="header-menu-item">
-                Контакты
+                Contacts
             </Link>
           ),
           key: 'contacts',
         },
         {
-          label: 'Категории',
+          label: 'Categories',
           key: 'categories',
           children: catalog.map((el) => (
             {
               label: (
-                <Link to={`/category/${el.idCategory}`}>
+                <Link to={`/category/${el.strCategory}`}>
                   {el.strCategory}
                 </Link>
               ),
-              key: `category-${el.idCategory}`,
+              key: `category-${el.strCategory}`,
             }
           )),
         },
@@ -68,6 +83,7 @@ export default function HeaderBlock({ catalog = [] }) {
                 display: 'flex',
                 alignItems: 'center',
                 height: "64px",
+                justifyContent: "center",
             }}
             >
             <Menu 
@@ -76,6 +92,8 @@ export default function HeaderBlock({ catalog = [] }) {
                 background: "none",
                 color: "white",
             }}
+            onClick={onClick} 
+            selectedKeys={[current]}
             mode="horizontal"
             theme="dark"
             selectable="false" 

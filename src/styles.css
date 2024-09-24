@@ -19,6 +19,8 @@ body {
 
 main{
   flex: 1;
+  /* min-height: calc(100vh - 64px); */
+  height: max-content;
 }
 
 #root{
@@ -59,4 +61,46 @@ nav, .header-inner{
 
 .header-menu-item{
   color: white;
+}
+
+.page-footer{
+  background-color: #001529;
+}
+
+.accent-color{
+  color: #1677ff;
+}
+
+h1{
+  font-size: 3rem;
+  font-family: Montserrat;
+  margin: 1.5rem 0 1rem 0;
+}
+
+h3{
+  font-size: 1.5rem;
+  font-family: Montserrat;
+  margin: 0 0 1rem 0;
+}
+
+.w-600{
+  font-weight: 600;
+}
+
+.welcome-text-block, .category-text-block{
+  text-align: center;
+  display: block;
+  margin-bottom: 3rem;
+}
+
+.category-subtext{
+  text-align: left;
+}
+
+:where(.css-dev-only-do-not-override-qnu6hi).ant-layout{
+  flex: none !important;
+}
+
+footer{
+  transform: translateY(100%);
 }
