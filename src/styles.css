@@ -40,3 +40,23 @@ main{
   flex-grow: 1;
   padding: 30px 40px;
 }
+
+nav, .header-inner{
+  height: 64px;
+  display: block;
+}
+
+.brand-logo img{
+  height: 60px;
+  object-fit: contain;
+  border-radius: 50px;
+}
+
+.brand-logo{
+  display: block;
+  height: 60px;
+}
+
+.header-menu-item{
+  color: white;
+}

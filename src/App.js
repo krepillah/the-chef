@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { useState } from "react";
+
 import Footer from "./components/Footer";
-import Header from "./components/Header";
+import HeaderBlock from "./components/HeaderBlock";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -9,13 +11,14 @@ import Notfound from "./pages/Notfound";
 
 
 export default function App() {
+  const [catalog, setCatalog] = useState([]);
   return (
     <div className="App">
       <Router>
-        <Header/>
+        <HeaderBlock catalog={catalog}/>
         <main>
             <Routes>
-              <Route exact path="/" element={<Home/>}/>
+              <Route exact path="/" element={<Home catalog={catalog} setCatalog={setCatalog}/>}/>
               <Route path="/about" element={<About/>}/>
               <Route path="/contacts" element={<Contacts/>}/>
               <Route element={<Notfound/>}/>

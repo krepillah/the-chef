@@ -16,7 +16,7 @@ export default function CategoryItem(props) {
                     hoverable
                     cover={<img src={strCategoryThumb} alt={strCategory} />}
                 >
-                    <Meta title={strCategory} description={strCategoryDescription} />
+                    <Meta title={strCategory}/>
                 </Card>
             </Link>
         </Col>
