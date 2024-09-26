@@ -11,7 +11,7 @@ export default function Footer() {
                 <h5 className="white-text">Links</h5>
                 <ul>
                     <li><a className="grey-text text-lighten-3" href="#!">Instagram</a></li>
-                    <li><a className="grey-text text-lighten-3" href="https://github.com/krepillah!">GitHub</a></li>
+                    <li><a className="grey-text text-lighten-3" href="https://github.com/krepillah" target="_blank" rel="noopener noreferrer">GitHub</a></li>
                     <li><a className="grey-text text-lighten-3" href="#!">Telegram</a></li>
                 </ul>
                 </div>

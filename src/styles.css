@@ -1,3 +1,13 @@
+@import "~flag-icons/css/flag-icons.min.css";
+
+.fi{
+  height: 30px;
+  margin-top: 10px;
+  margin-left: 20px;
+  object-fit: contain;
+  width: 40px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -68,17 +78,17 @@ nav, .header-inner{
 }
 
 .accent-color{
-  color: #1677ff;
+  color: #1677ff!important;
 }
 
 h1{
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-family: Montserrat;
   margin: 1.5rem 0 1rem 0;
 }
 
 h3{
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-family: Montserrat;
   margin: 0 0 1rem 0;
 }
@@ -87,10 +97,14 @@ h3{
   font-weight: 600;
 }
 
-.welcome-text-block, .category-text-block{
+.welcome-text-block, .category-text-block, .recipe-text-block, .saved-title-block{
   text-align: center;
   display: block;
   margin-bottom: 3rem;
+}
+
+.recipe-text-block{
+  margin-bottom: 2rem;
 }
 
 .category-subtext{
@@ -103,4 +117,84 @@ h3{
 
 footer{
   transform: translateY(100%);
+}
+
+.recipe-title-block{
+  display: inline-flex;
+  align-items: center;
+}
+
+.recipe-tag-block{
+  display: block;
+}
+
+.recipe-page-block{
+  text-align: center;
+  max-width: 90vw;
+  margin: auto;
+}
+
+.ingredient-item{
+  width: 100%;
+  display: inline-flex;
+  justify-content: space-between;
+}
+
+.recipe-components-block{
+  flex-grow: 1;
+  max-width: 500px;
+  min-width: 250px;
+  margin-left: 40px;
+}
+
+.recipe-content-header{
+  display: flex;
+  justify-content: center;
+}
+
+.recipe-content-header img{
+  border-radius: 8px;
+  max-height: 550px;
+}
+
+.ant-divider{
+  margin-top: 50px!important;
+}
+
+.recipe-algorithm-text{
+  text-align: left;
+  margin-top: 20px;
+}
+
+.recipe-algorithm-text li{
+  margin-bottom: 10px;
+}
+
+.recipe-image{
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #d9d9d9;
+}
+
+.ant-divider {
+  margin-top: 10px !important;
+}
+
+.iframe-block{
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+}
+
+iframe{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border: none;
+}
+
+.back-button{
+  margin-top: 24px;
 }

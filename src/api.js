@@ -14,3 +14,7 @@ export const getFilteredCategory = async (categoryName) => {
     const response = await fetch(`${API_URL}filter.php?c=${categoryName}`);
     return await response.json();
 }
+
+export const mealInStorage = (mealId) => {
+    return sessionStorage.getItem(mealId) !== null;
+}

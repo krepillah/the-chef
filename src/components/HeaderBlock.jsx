@@ -2,19 +2,19 @@ import { Link} from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getAllCategories } from "../api";
 import { Layout, Menu} from "antd";
-import {  SettingOutlined  } from '@ant-design/icons';
+import { SettingOutlined, HeartOutlined, HeartFilled } from '@ant-design/icons';
 
 export default function HeaderBlock(props) {
   const {catalog, setCatalog} = props;
-    const { Header } = Layout;
+  const [current, setCurrent] = useState('logo');
+  const { Header } = Layout;
 
-    useEffect(() => {
-      getAllCategories().then(data => {
-          setCatalog(data.categories)
-      })
+  useEffect(() => {
+    getAllCategories().then(data => {
+        setCatalog(data.categories)
+    })
   }, []);
 
-  const [current, setCurrent] = useState('logo');
   const onClick = (e) => {
     console.log('click ', e);
     setCurrent(e.key);
@@ -33,22 +33,6 @@ export default function HeaderBlock(props) {
           ),
         },
         {
-          label: (
-            <Link to="/about" className="header-menu-item">
-              About
-            </Link>
-          ),
-          key: 'about',
-        },
-        {
-          label: (
-            <Link to="/contacts" className="header-menu-item">
-                Contacts
-            </Link>
-          ),
-          key: 'contacts',
-        },
-        {
           label: 'Categories',
           key: 'categories',
           children: catalog.map((el) => (
@@ -61,6 +45,23 @@ export default function HeaderBlock(props) {
               key: `category-${el.strCategory}`,
             }
           )),
+        },
+        {
+          label: (
+            <Link to="/saved" className="header-menu-item">
+                Saved
+            </Link>
+          ),
+          key: 'saved',
+          icon: (current === "saved")?(<HeartFilled />):(<HeartOutlined />)
+        },
+        {
+          label: (
+            <Link to="/about" className="header-menu-item">
+              About
+            </Link>
+          ),
+          key: 'about',
         },
         {
           key: 'api',

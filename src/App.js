@@ -6,9 +6,10 @@ import HeaderBlock from "./components/HeaderBlock";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Contacts from "./pages/Contacts";
+import Saved from "./pages/Saved";
 import Notfound from "./pages/Notfound";
 import Category from "./pages/Category";
+import Recipe from "./pages/Recipe";
 
 
 export default function App() {
@@ -21,8 +22,9 @@ export default function App() {
             <Routes>
               <Route exact path="/" element={<Home catalog={catalog} setCatalog={setCatalog}/>}/>
               <Route path="/about" element={<About/>}/>
-              <Route path="/contacts" element={<Contacts/>}/>
+              <Route path="/saved" element={<Saved/>}/>
               <Route path="/category/:name" element={<Category catalog={catalog}/>}/>
+              <Route path="/meal/:id" element={<Recipe/>}/>
               <Route element={<Notfound/>}/>
             </Routes>
         </main>
