@@ -16,15 +16,16 @@ export default function Saved() {
 
             for (let i = 0; i < sessionStorage.length; i++) {
                 const key = sessionStorage.key(i);
-                const value = sessionStorage.getItem(key);
-                promises.push(getMealById(value).then((data) => {
-                    allItems.push({
-                        "idMeal": data.meals[0].idMeal,
-                        "strMeal": data.meals[0].strMeal,
-                        "strMealThumb": data.meals[0].strMealThumb,
-                    });
-                }  
-            ));
+                if(key.includes("meal_")){
+                    const value = sessionStorage.getItem(key);
+                    promises.push(getMealById(value).then((data) => {
+                        allItems.push({
+                            "idMeal": data.meals[0].idMeal,
+                            "strMeal": data.meals[0].strMeal,
+                            "strMealThumb": data.meals[0].strMealThumb,
+                        });
+                    }));
+                }
             }
 
             await Promise.all(promises);
@@ -40,7 +41,7 @@ export default function Saved() {
     return (
         <>
             {!meals.length ? (loading?<Preloader/>:(
-                    <div className="saved-text-block">
+                <div className="saved-text-block">
                     <span className="saved-title-block">
                         <h1 className="saved-title">There's nothing here yet...</h1>
                         <h3 className="saved-subtext">When you like your favorite recipes, they will be displayed here</h3>

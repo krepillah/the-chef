@@ -97,7 +97,7 @@ h3{
   font-weight: 600;
 }
 
-.welcome-text-block, .category-text-block, .recipe-text-block, .saved-title-block{
+.welcome-text-block, .category-text-block, .recipe-text-block, .saved-title-block, .category-list-text-block{
   text-align: center;
   display: block;
   margin-bottom: 3rem;
@@ -197,4 +197,41 @@ iframe{
 
 .back-button{
   margin-top: 24px;
+}
+
+.random-meal-block .ant-card-cover{
+  position: relative;
+  width: 100%;
+  padding-bottom: 62.5%;
+}
+
+.random-meal-image{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border: none;
+  object-fit: cover;
+}
+
+.random-meal-meta-block{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.random-meal-title-block{
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ant-card-meta-title-text{
+  margin: 0 16px;
+}
+
+.random-meal-block .ant-card-body{
+  padding: 21px 24px;
 }

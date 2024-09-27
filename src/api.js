@@ -15,6 +15,11 @@ export const getFilteredCategory = async (categoryName) => {
     return await response.json();
 }
 
+export const getRandomMeal = async () => {
+    const response = await fetch(`${API_URL}random.php`);
+    return await response.json();
+}
+
 export const mealInStorage = (mealId) => {
-    return sessionStorage.getItem(mealId) !== null;
+    return sessionStorage.getItem(`meal_${mealId}`) !== null;
 }

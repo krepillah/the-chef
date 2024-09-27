@@ -17,13 +17,13 @@ export default function Meal(props){
 
     const removeItem = (event, id) => {
         event.preventDefault();
-        sessionStorage.removeItem(id);
+        sessionStorage.removeItem(`meal_${id}`);
         setInStorage(false);
     }
 
     const setItem = (event, id) => {
         event.preventDefault();
-        sessionStorage.setItem(id, id);
+        sessionStorage.setItem(`meal_${id}`, id);
         setInStorage(true);
     }
 
