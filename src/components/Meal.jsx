@@ -1,37 +1,40 @@
-import { Col, Card } from "antd";
-import { Link } from "react-router-dom";
-import { HeartOutlined, HeartFilled } from '@ant-design/icons';
-import { mealInStorage } from "../api";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-export default function Meal(props){
+import { Col, Card } from "antd";
+import { HeartOutlined, HeartFilled } from "@ant-design/icons";
+import { mealInStorage } from "../api";
+
+
+export default function Meal(props) {
     const {
-        idMeal, 
-        strMeal, 
+        idMeal,
+        strMeal,
         strMealThumb,
+        handleMealRemoval = Function.prototype,
     } = props;
+    const { Meta } = Card;
 
     const [inStorage, setInStorage] = useState(false);
-
-    const { Meta } = Card;
 
     const removeItem = (event, id) => {
         event.preventDefault();
         sessionStorage.removeItem(`meal_${id}`);
         setInStorage(false);
-    }
+        handleMealRemoval(id);
+    };
 
     const setItem = (event, id) => {
         event.preventDefault();
         sessionStorage.setItem(`meal_${id}`, id);
         setInStorage(true);
-    }
+    };
 
     useEffect(() => {
-        if(mealInStorage(idMeal)){
+        if (mealInStorage(idMeal)) {
             setInStorage(true);
         }
-    },[idMeal])
+    }, [idMeal]);
 
     return (
         <Col xs={24} sm={12} md={8} xl={6} xxl={4}>
@@ -40,10 +43,25 @@ export default function Meal(props){
                     hoverable
                     cover={<img src={strMealThumb} alt={strMeal} />}
                 >
-                    <Meta title={strMeal} avatar={(inStorage)?<HeartFilled style={{color: "#1677ff"}} onClick={(event) => removeItem(event, idMeal)}/>:<HeartOutlined onClick={(event) => setItem(event, idMeal)}/>}/>
+                    <Meta
+                        title={strMeal}
+                        avatar={
+                            inStorage ? (
+                                <HeartFilled
+                                    style={{ color: "#1677ff" }}
+                                    onClick={(event) =>
+                                        removeItem(event, idMeal)
+                                    }
+                                />
+                            ) : (
+                                <HeartOutlined
+                                    onClick={(event) => setItem(event, idMeal)}
+                                />
+                            )
+                        }
+                    />
                 </Card>
             </Link>
         </Col>
     );
-
 }

@@ -3,10 +3,8 @@ import { Col, Card } from "antd";
 
 export default function CategoryItem(props) {
     const {
-        //idCategory,
         strCategory,
         strCategoryThumb,
-        //strCategoryDescription,
     } = props;
 
     const { Meta } = Card;
@@ -18,7 +16,7 @@ export default function CategoryItem(props) {
                         hoverable
                         cover={<img src={strCategoryThumb} alt={strCategory} />}
                     >
-                        <Meta title={strCategory}/>
+                        <Meta title={strCategory} />
                     </Card>
                 </Link>
             </Col>

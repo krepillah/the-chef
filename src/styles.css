@@ -40,7 +40,8 @@ main{
 .App{
   display: flex;
   flex-direction: column;
-  height: 100%;
+  position: relative;
+  min-height: 100%;
 }
 
 code {
@@ -86,21 +87,36 @@ h1{
   font-size: 2.5rem;
   font-family: Montserrat;
   margin: 1.5rem 0 1rem 0;
+  text-align: center;
 }
 
 h3{
   font-size: 1.4rem;
   font-family: Montserrat;
   margin: 0 0 1rem 0;
+  text-align: left;
+  margin-bottom: 2rem;
 }
 
 .w-600{
   font-weight: 600;
 }
 
-.welcome-text-block, .category-text-block, .recipe-text-block, .saved-title-block, .category-list-text-block{
+.recipe-text-block, .saved-title-block, .category-list-text-block{
   text-align: center;
   display: block;
+  margin-bottom: 3rem;
+}
+
+.saved-text-block h3, .home-page-block h3, .notfound-page-block h3{
+  text-align: center;
+}
+
+.category-list-text-block, .category-text-block{
+  margin-bottom: 2rem;
+}
+
+.search-block{
   margin-bottom: 3rem;
 }
 
@@ -118,6 +134,9 @@ h3{
 
 footer{
   transform: translateY(100%);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 .recipe-title-block{
@@ -158,10 +177,6 @@ footer{
   max-height: 550px;
 }
 
-.ant-divider{
-  margin-top: 50px!important;
-}
-
 .recipe-algorithm-text{
   text-align: left;
   margin-top: 20px;
@@ -177,7 +192,7 @@ footer{
   border: 1px solid #d9d9d9;
 }
 
-.ant-divider {
+.custom-divider {
   margin-top: 10px !important;
 }
 
@@ -216,6 +231,10 @@ iframe{
   object-fit: cover;
 }
 
+.ant-skeleton.ant-skeleton-element.random-meal-image{
+  width: 100%;
+}
+
 .random-meal-meta-block{
   display: flex;
   justify-content: space-between;
@@ -235,4 +254,43 @@ iframe{
 
 .random-meal-block .ant-card-body{
   padding: 21px 24px;
+}
+
+.random-meal-block.ant-card-bordered .ant-card-cover{
+  margin: 0;
+}
+
+.button-block{
+  display: flex;
+  justify-content: center;
+}
+
+.backtop.ant-back-top .ant-back-top-content{
+  background-color: #1677ff;
+}
+
+.backtop.ant-back-top .ant-back-top-content:hover{
+  background-color: #001529;
+
+}
+
+.custom-search input[type=text]:not(.browser-default){
+  border: none!important;
+  margin: 0;
+  height: inherit;
+  font-size: inherit;
+}
+
+.custom-search{
+  width: 100%;
+}
+
+.search-block{
+  display: flex;
+  justify-content: center;
+}
+
+.preloader-block{
+  display: flex;
+    justify-content: center;
 }

@@ -1,35 +1,70 @@
-import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 
+import { FloatButton } from "antd";
 import { getFilteredCategory } from "../api";
 import Preloader from "../components/Preloader";
 import MealsList from "../components/MealsList";
 import BackButton from "../components/BackButton";
+import Search from "../components/Search";
+import Title from "../components/Title";
 
-export default function Category(props){
-    const {catalog} = props;
-    const {name} = useParams();
+export default function Category(props) {
+    const { catalog } = props;
+    const { name } = useParams();
+    const { pathname, search } = useLocation();
+    const { BackTop } = FloatButton;
+    const navigate = useNavigate();
+
     const [meals, setMeals] = useState([]);
+    const [filtered, setFiltered] = useState([]);
+
+    const handleSearch = (str) => {
+        if (str === "") {
+            setFiltered(meals);
+            navigate(`${pathname}`);
+        } else {
+            setFiltered(
+                meals.filter((item) =>
+                    item.strMeal.toLowerCase().includes(str.toLowerCase())
+                )
+            );
+            navigate(`${pathname}?search_meal=${str}`);
+        }
+    };
+
+    useEffect(() => {
+        setFiltered(
+            search
+                ? meals.filter((item) =>
+                      item.strMeal
+                          .toLowerCase()
+                          .includes(search.split("=")[1].toLowerCase())
+                  )
+                : meals
+        );
+    }, [meals, search]);
 
     useEffect(() => {
         getFilteredCategory(name).then((data) => setMeals(data.meals));
-    }, [name])
+    }, [name]);
 
     let description = "";
-    if(catalog.length){
-        description = "\t"+catalog.filter((item) =>
-            item.strCategory === name
-        )[0].strCategoryDescription.replace(/\[\d*\]/g, '');
+    if (catalog.length) {
+        description =
+            "\t" +
+            catalog
+                .filter((item) => item.strCategory === name)[0]
+                .strCategoryDescription.replace(/\[\d*\]/g, "");
     }
 
     return (
         <div className="category-page-block">
-            <span className="category-text-block">
-                <h1 className="category-text"><i className="accent-color w-600">{name}</i></h1>
-                <h3 className="category-subtext">{description}</h3>
-            </span>
-            {!meals.length ? <Preloader/> : <MealsList meals={meals}/>}
-            <BackButton name="Back to categories"/>
+            <Title highlighted={name} description={description} />
+            <Search cb={handleSearch} name="search meal..." />
+            {!meals.length ? <Preloader /> : <MealsList meals={filtered} />}
+            <BackButton name="Back to categories" />
+            <BackTop className="backtop" />
         </div>
-    )
+    );
 }

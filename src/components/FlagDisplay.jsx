@@ -5,14 +5,12 @@ const getCountryCode = (countryName) => {
 };
 
 export default function FlagDisplay({ countryName }) {
-    const countryCode = getCountryCode(countryName); // Функция для получения кода страны
+    const countryCode = getCountryCode(countryName);
     return (
         <>
-        {countryCode && (
-            <span
-                className={`fi fi-${countryCode.toLowerCase()}`}
-            ></span>
-        )}
+            {countryCode && (
+                <span className={`fi fi-${countryCode.toLowerCase()}`}></span>
+            )}
         </>
     );
 }

@@ -1,21 +1,28 @@
-import { Col, Card, Button, Typography } from "antd";
-import { Link } from "react-router-dom";
-import { mealInStorage, getRandomMeal } from "../api";
 import { useEffect, useState } from "react";
+
+import { getRandomMeal } from "../api";
 import RandMeal from "./RandMeal";
 import LoadingCard from "./LoadingCard";
 
-export default function RandomMealBlock(){
+export default function RandomMealBlock() {
     const [meal, setMeal] = useState({});
 
-    useEffect(()=> {
+    const fetchRandomMeal = async (event) => {
+        event && event.preventDefault();
         getRandomMeal().then((data) => setMeal(data.meals[0]));
-    }, [])
+    };
+
+    useEffect(() => {
+        fetchRandomMeal();
+    }, []);
 
     return (
         <>
-            {!meal.length ? <LoadingCard/> : <RandMeal meal={meal}/>}
+            {!meal.idMeal ? (
+                <LoadingCard />
+            ) : (
+                <RandMeal meal={meal} fetchRandomMeal={fetchRandomMeal} />
+            )}
         </>
     );
-
 }

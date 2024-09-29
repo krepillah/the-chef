@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useState } from "react";
 
-import Footer from "./components/Footer";
 import HeaderBlock from "./components/HeaderBlock";
+import Footer from "./components/Footer";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -25,12 +25,11 @@ export default function App() {
               <Route path="/saved" element={<Saved/>}/>
               <Route path="/category/:name" element={<Category catalog={catalog}/>}/>
               <Route path="/meal/:id" element={<Recipe/>}/>
-              <Route element={<Notfound/>}/>
+              <Route path="*" element={<Notfound/>}/>
             </Routes>
         </main>
         <Footer/>
       </Router>
-
     </div>
   );
 }
