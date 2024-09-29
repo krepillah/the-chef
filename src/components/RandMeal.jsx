@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { Card, Typography, Col, Button } from "antd";
 import { HeartOutlined, HeartFilled } from "@ant-design/icons";
-import { mealInStorage } from "../api";
 
 export default function RandMeal({ meal, fetchRandomMeal }) {
     const { idMeal, strMealThumb, strMeal } = meal;
@@ -23,12 +22,6 @@ export default function RandMeal({ meal, fetchRandomMeal }) {
         sessionStorage.setItem(`meal_${id}`, id);
         setInStorage(true);
     };
-
-    useEffect(() => {
-        if (mealInStorage(idMeal)) {
-            setInStorage(true);
-        }
-    }, [idMeal]);
 
     return (
         <Col xs={24} sm={12} md={8} xl={6} xxl={4}>
@@ -76,7 +69,7 @@ export default function RandMeal({ meal, fetchRandomMeal }) {
                                         whiteSpace: "nowrap",
                                         marginLeft: "10px",
                                     }}
-                                    onClick={(event) => fetchRandomMeal(event)}
+                                    onClick={(event) => fetchRandomMeal(event, setInStorage)}
                                 >
                                     Get random
                                 </Button>
