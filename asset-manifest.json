@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/the-chef/static/css/main.c86d42d8.css",
-    "main.js": "/the-chef/static/js/main.23bbd8bf.js",
+    "main.js": "/the-chef/static/js/main.6e9de22a.js",
     "static/media/rs.svg": "/the-chef/static/media/rs.b16c22033ad1a395b009.svg",
     "static/media/sh-ac.svg": "/the-chef/static/media/sh-ac.2f733db97b52ef32314b.svg",
     "static/media/bo.svg": "/the-chef/static/media/bo.2df6927ff85d4a69996b.svg",
@@ -114,13 +114,13 @@
     "static/media/hm.svg": "/the-chef/static/media/hm.fe75e73aa43e2b17f7c5.svg",
     "static/media/ba.svg": "/the-chef/static/media/ba.2d7f430f443e46b91acd.svg",
     "static/media/ve.svg": "/the-chef/static/media/ve.8654417d0313322c0ee9.svg",
+    "index.html": "/the-chef/index.html",
     "static/media/tf.svg": "/the-chef/static/media/tf.a1e1b04e6e2a99335098.svg",
     "static/media/sk.svg": "/the-chef/static/media/sk.10df93d5bbac5915911a.svg",
     "static/media/et.svg": "/the-chef/static/media/et.d27d9d1ac47ed9291a62.svg",
     "static/media/hn.svg": "/the-chef/static/media/hn.2427006aada8b474df11.svg",
     "static/media/ls.svg": "/the-chef/static/media/ls.4856aea205c94f19b9a3.svg",
     "static/media/np.svg": "/the-chef/static/media/np.04984547fd38cbe44c74.svg",
-    "index.html": "/the-chef/index.html",
     "static/media/in.svg": "/the-chef/static/media/in.12c66a162687c5c17ea4.svg",
     "static/media/bi.svg": "/the-chef/static/media/bi.69b0670030ec8e43f88a.svg",
     "static/media/kr.svg": "/the-chef/static/media/kr.977537ff603f52b41d25.svg",
@@ -274,10 +274,10 @@
     "static/media/pe.svg": "/the-chef/static/media/pe.d64e9732fcaa8f765994.svg",
     "static/media/id.svg": "/the-chef/static/media/id.f624e2c8444a7794b357.svg",
     "main.c86d42d8.css.map": "/the-chef/static/css/main.c86d42d8.css.map",
-    "main.23bbd8bf.js.map": "/the-chef/static/js/main.23bbd8bf.js.map"
+    "main.6e9de22a.js.map": "/the-chef/static/js/main.6e9de22a.js.map"
   },
   "entrypoints": [
     "static/css/main.c86d42d8.css",
-    "static/js/main.23bbd8bf.js"
+    "static/js/main.6e9de22a.js"
   ]
 }
