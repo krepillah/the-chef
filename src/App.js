@@ -16,7 +16,7 @@ export default function App() {
   const [catalog, setCatalog] = useState([]);
   return (
     <div className="App">
-      <Router>
+      <Router basename="/the-chef">
         <HeaderBlock catalog={catalog} setCatalog={setCatalog}/>
         <main>
             <Routes>

@@ -32,7 +32,7 @@ export default function HeaderBlock(props) {
             key: "logo",
             label: (
                 <Link to="/" className="brand-logo">
-                    <img src="/images/chef-logo.jpg" alt="Chef-logo" />
+                    <img src="images/chef-logo.jpg" alt="Chef-logo" />
                 </Link>
             ),
         },
