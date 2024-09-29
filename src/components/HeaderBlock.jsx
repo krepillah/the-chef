@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { Layout, Menu } from "antd";
 import { SettingOutlined, HeartOutlined, HeartFilled } from "@ant-design/icons";
 import { getAllCategories } from "../api";
-import Logo from "../../public/images/chef-logo.jpg"
 
 export default function HeaderBlock(props) {
     const { catalog, setCatalog } = props;
@@ -33,7 +32,7 @@ export default function HeaderBlock(props) {
             key: "logo",
             label: (
                 <Link to="/" className="brand-logo">
-                    <img src={Logo} alt="Chef-logo" />
+                    <img src="/the-chef/images/chef-logo.jpg" alt="Chef-logo" />
                 </Link>
             ),
         },
