@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/the-chef/static/css/main.c86d42d8.css",
-    "main.js": "/the-chef/static/js/main.6e9de22a.js",
+    "main.js": "/the-chef/static/js/main.750a2536.js",
     "static/media/rs.svg": "/the-chef/static/media/rs.b16c22033ad1a395b009.svg",
     "static/media/sh-ac.svg": "/the-chef/static/media/sh-ac.2f733db97b52ef32314b.svg",
     "static/media/bo.svg": "/the-chef/static/media/bo.2df6927ff85d4a69996b.svg",
@@ -274,10 +274,10 @@
     "static/media/pe.svg": "/the-chef/static/media/pe.d64e9732fcaa8f765994.svg",
     "static/media/id.svg": "/the-chef/static/media/id.f624e2c8444a7794b357.svg",
     "main.c86d42d8.css.map": "/the-chef/static/css/main.c86d42d8.css.map",
-    "main.6e9de22a.js.map": "/the-chef/static/js/main.6e9de22a.js.map"
+    "main.750a2536.js.map": "/the-chef/static/js/main.750a2536.js.map"
   },
   "entrypoints": [
     "static/css/main.c86d42d8.css",
-    "static/js/main.6e9de22a.js"
+    "static/js/main.750a2536.js"
   ]
 }
