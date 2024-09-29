@@ -88,6 +88,7 @@ export default function HeaderBlock(props) {
                 position: "sticky",
                 top: "0",
                 zIndex: "100",
+                flex: "inherit",
             }}
         >
             <Header
