@@ -88,6 +88,7 @@ h1{
   font-family: Montserrat;
   margin: 1.5rem 0 1rem 0;
   text-align: center;
+  font-weight: 400;
 }
 
 h3{
@@ -293,4 +294,14 @@ iframe{
 .preloader-block{
   display: flex;
     justify-content: center;
+}
+
+.footer-copyright{
+  padding-top: 16px;
+  border-top: 1px solid #1677ff;
+  margin-top: 16px;
+}
+
+.footer-main-content li{
+  height: 30px !important;
 }

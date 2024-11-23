@@ -29,7 +29,7 @@ export default function Recipe() {
         });
 
     useEffect(() => {
-        getMealById(id).then((data) => setRecipe(data.meals[0]));
+        getMealById(id).then((data) => setRecipe(data.meal[0]));
     }, [id]);
 
     return (
@@ -102,7 +102,7 @@ export default function Recipe() {
                                         -11
                                     )}`}
                                     title={recipe.strMeal}
-                                    allowfullscreen
+                                    allowFullScreen
                                 ></iframe>
                             </div>
                         </Col>

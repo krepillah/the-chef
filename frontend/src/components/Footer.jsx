@@ -1,61 +1,69 @@
+import { Layout, Row, Col, Typography, Menu } from 'antd';
 import { Link } from "react-router-dom";
 
 export default function Footer() {
+    const { Footer } = Layout;
+    const { Title, Text } = Typography;
+    const { Item } = Menu; 
+    
     return (
-        <footer className="page-footer">
-            <div className="container">
-                <div className="row">
-                    <div className="col l6 s12">
-                        <h5 className="white-text">Interest</h5>
-                        <p className="grey-text text-lighten-4">
-                            Imagine that there is a cool footer here and you
-                            feel incredible pleasure reading it.
-                        </p>
-                    </div>
-                    <div className="col l4 offset-l2 s12">
-                        <h5 className="white-text">Links</h5>
-                        <ul>
-                            <li>
-                                <a
-                                    className="grey-text text-lighten-3"
-                                    href="#!"
-                                >
-                                    Instagram
+        <Footer style={{ backgroundColor: '#001529', padding: '24px 50px' }}>
+            <div className="footer-main-content">
+                <Row justify="space-between" gutter={[16, 16]}>
+                    <Col xs={24} sm={12} lg={12}>
+                        <Title level={5} style={{ color: '#fff' }}>
+                        Interest
+                        </Title>
+                        <Text style={{ color: '#8c8c8c' }}>
+                        Imagine that there is a cool footer here and you feel incredible
+                        pleasure reading it.
+                        </Text>
+                    </Col>
+                    <Col xs={24} sm={12} lg={8}>
+                        <Menu theme="dark" mode="vertical" style={{ backgroundColor: '#001529' }}>
+                            <Item key="0">
+                                <Title level={5} style={{ color: '#fff' }}>
+                                    Links
+                                </Title>
+                            </Item>
+                            <Item key="1">
+                                <a href="#!" style={{ color: '#8c8c8c' }}>
+                                Instagram
                                 </a>
-                            </li>
-                            <li>
+                            </Item>
+                            <Item key="2">
                                 <a
-                                    className="grey-text text-lighten-3"
-                                    href="https://github.com/krepillah"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                href="https://github.com/krepillah"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{ color: '#8c8c8c' }}
                                 >
-                                    GitHub
+                                GitHub
                                 </a>
-                            </li>
-                            <li>
-                                <a
-                                    className="grey-text text-lighten-3"
-                                    href="#!"
-                                >
-                                    Telegram
+                            </Item>
+                            <Item key="3">
+                                <a href="#!" style={{ color: '#8c8c8c' }}>
+                                Telegram
                                 </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                            </Item>
+                        </Menu>
+                    </Col>
+                </Row>
             </div>
             <div className="footer-copyright">
-                <div className="container">
+                <Row justify="space-between" align="middle">
+                <Col>
+                    <Text style={{ color: '#8c8c8c' }}>
                     © {new Date().getFullYear()} Copyright Text
-                    <Link
-                        to="/about"
-                        className="grey-text text-lighten-4 right"
-                    >
-                        About us
+                    </Text>
+                </Col>
+                <Col>
+                    <Link to="/about" style={{ color: '#8c8c8c' }}>
+                    About us
                     </Link>
-                </div>
+                </Col>
+                </Row>
             </div>
-        </footer>
+        </Footer>
     );
 }

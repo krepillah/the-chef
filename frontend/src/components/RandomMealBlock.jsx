@@ -10,7 +10,7 @@ export default function RandomMealBlock() {
     const fetchRandomMeal = async (event, cb = Function.prototype) => {
         event && event.preventDefault();
         const data = await getRandomMeal();
-        const newMeal = data.meals[0];
+        const newMeal = data.meal;
         setMeal(newMeal);
 
         if (mealInStorage(newMeal.idMeal)) {

@@ -2,7 +2,7 @@
   "name": "the-chef",
   "version": "0.1.0",
   "private": false,
-  "homepage":"https://krepillah.github.io/the-chef",
+  "homepage": "https://krepillah.github.io/the-chef",
   "dependencies": {
     "@ant-design/icons": "^5.5.1",
     "@testing-library/jest-dom": "^5.17.0",
@@ -21,8 +21,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build", 
-	  "deploy": "gh-pages -d build"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [

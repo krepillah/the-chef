@@ -25,9 +25,9 @@ export default function Saved() {
                     promises.push(
                         getMealById(value).then((data) => {
                             allItems.push({
-                                idMeal: data.meals[0].idMeal,
-                                strMeal: data.meals[0].strMeal,
-                                strMealThumb: data.meals[0].strMealThumb,
+                                idMeal: data.meal[0].idMeal,
+                                strMeal: data.meal[0].strMeal,
+                                strMealThumb: data.meal[0].strMealThumb,
                             });
                         })
                     );

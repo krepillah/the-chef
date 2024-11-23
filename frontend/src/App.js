@@ -10,6 +10,7 @@ import Saved from "./pages/Saved";
 import Notfound from "./pages/Notfound";
 import Category from "./pages/Category";
 import Recipe from "./pages/Recipe";
+import Admin from "./pages/Admin"
 
 
 export default function App() {
@@ -25,6 +26,7 @@ export default function App() {
               <Route path="/saved" element={<Saved/>}/>
               <Route path="/category/:name" element={<Category catalog={catalog}/>}/>
               <Route path="/meal/:id" element={<Recipe/>}/>
+              <Route path="/admin" element={<Admin/>}/>
               <Route path="*" element={<Notfound/>}/>
             </Routes>
         </main>

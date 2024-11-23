@@ -26,7 +26,7 @@ export default function Category(props) {
         } else {
             setFiltered(
                 meals.filter((item) =>
-                    item.strMeal.toLowerCase().includes(str.toLowerCase())
+                    item.strNeal.toLowerCase().includes(str.toLowerCase())
                 )
             );
             navigate(`${pathname}?search_meal=${str}`);
