@@ -26,7 +26,7 @@ export default function App() {
               <Route path="/saved" element={<Saved/>}/>
               <Route path="/category/:name" element={<Category catalog={catalog}/>}/>
               <Route path="/meal/:id" element={<Recipe/>}/>
-              <Route path="/admin" element={<Admin/>}/>
+              <Route path="/admin" element={<Admin catalog={catalog}/>}/>
               <Route path="*" element={<Notfound/>}/>
             </Routes>
         </main>

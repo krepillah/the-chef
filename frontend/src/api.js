@@ -1,5 +1,3 @@
-import { API_URL } from "./config";
-
 export const getMealById = async (mealId) => {
     const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/meal/${mealId}`);
     return await response.json();

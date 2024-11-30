@@ -3,7 +3,7 @@ import AuthForm from "../components/AuthForm"
 import Title from "../components/Title"
 import AdminPanel from "../components/AdminPanel";
 
-export default function Admin() {
+export default function Admin({catalog}) {
     const [authorzsed, setAuthorized] = useState(false);
 
     useEffect(() => {
@@ -24,7 +24,6 @@ export default function Admin() {
                 return response.json();
             })
             .then((data) => {
-                console.log('Token is valid:', data);
                 setAuthorized(true); 
             })
             .catch((error) => {
@@ -48,7 +47,7 @@ export default function Admin() {
                     title="Admin"
                     highlighted="panel"
                 />
-                <AdminPanel/>
+                <AdminPanel setAuthorized={setAuthorized} catalog={catalog}/>
             </>
         )
    ) 

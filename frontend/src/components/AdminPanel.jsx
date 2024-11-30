@@ -1,6 +1,8 @@
 import {Row, Col, Collapse} from "antd"
+import AddCategoryForm from "./AddCategoryForm"
+import AddMealForm from "./AddMealForm"
 
-export default function AdminPanel() {
+export default function AdminPanel({setAuthorized, catalog}) {
 
     return (
         <Row gutter={[24, 32]} justify={"center"}>
@@ -9,10 +11,9 @@ export default function AdminPanel() {
                     items={[{
                         key: '1',
                         label: 'Add category',
-                        children: <div></div>,
+                        children: <AddCategoryForm setAuthorized={setAuthorized}/>,
                     }]} 
                     bordered={false} 
-                    defaultActiveKey={['1']} 
                 />
             </Col>
             <Col xs={24} md={20} lg={10} xxl={8}>
@@ -20,10 +21,9 @@ export default function AdminPanel() {
                     items={[{
                         key: '2',
                         label: 'Add meal',
-                        children: <div></div>,
+                        children: <AddMealForm setAuthorized={setAuthorized} catalog={catalog}/>,
                     }]} 
                     bordered={false} 
-                    defaultActiveKey={['1']} 
                 />
             </Col>
         </Row>

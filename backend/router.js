@@ -72,6 +72,47 @@ router.get('/categories', async (req, res) => {
   }
 });
 
+router.post('/categories/new', async (req, res) => {
+  const { strCategory, strCategoryThumb, strCategoryDescription } = req.body;
+  const token = req.headers.authorization?.split(' ')[1];
+
+  if (!token) {
+    return res.status(401).json({ message: 'Authorization token is missing' });
+  }
+
+  try {
+    const { data: user, error: authError } = await supabase.auth.getUser(token);
+
+    if (authError || !user) {
+      return res.status(401).json({ message: 'Invalid token', error: authError.message });
+    }
+
+    const { data, error } = await supabase
+      .from('categories')
+      .insert([
+        {
+          strCategory,
+          strCategoryThumb,
+          strCategoryDescription,
+        },
+    ])
+    .select();
+
+    if (error) {
+      return res.status(400).json({ message: 'Error adding category', error: error.message });
+      
+    }
+
+    return res.status(200).json({
+      message: 'Category added successfully',
+      category: data[0],
+    });
+  } catch (error) {
+    console.error('Error adding category:', error.message);
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+});
+
 router.get('/categories/:name', async (req, res) => {
   const { name } = req.params;
 
@@ -127,6 +168,40 @@ router.get('/meal/random', async (req, res) => {
   }
 });
 
+router.post('/meal/new', async (req, res) => {
+  const token = req.headers.authorization?.split(' ')[1];
+
+  if (!token) {
+    return res.status(401).json({ message: 'Authorization token is missing' });
+  }
+
+  try {
+    const { data: user, error: authError } = await supabase.auth.getUser(token);
+
+    if (authError || !user) {
+      return res.status(401).json({ message: 'Invalid token', error: authError.message });
+    }
+
+    const { data, error } = await supabase
+      .from('meals')
+      .insert(req.body)
+      .select();
+
+    if (error) {
+      return res.status(400).json({ message: 'Error adding meal', error: error.message });
+      
+    }
+
+    return res.status(200).json({
+      message: 'Meal added successfully',
+      category: data[0],
+    });
+  } catch (error) {
+    console.error('Error adding meal:', error.message);
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+})
+
 router.get('/meal/:id', async (req, res) => {
   const {id} = req.params;
 
@@ -145,10 +220,6 @@ router.get('/meal/:id', async (req, res) => {
       res.status(500).json({ error: 'Internal server error' });
   }
 })
-
-
-router.post('/meal/new')
-router.post('/categories/new')
 
 router.put('/meal/:id/update')
 router.put('/categories/:name/update')
