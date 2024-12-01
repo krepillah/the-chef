@@ -2,20 +2,21 @@ import { useState, useEffect } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 
 import { FloatButton } from "antd";
-import { getFilteredCategory } from "../api";
+import { getFilteredCategory, checkToken } from "../api";
 import Preloader from "../components/Preloader";
 import MealsList from "../components/MealsList";
 import BackButton from "../components/BackButton";
 import Search from "../components/Search";
 import Title from "../components/Title";
 
-export default function Category(props) {
-    const { catalog } = props;
+export default function Category({ catalog }) {
     const { name } = useParams();
     const { pathname, search } = useLocation();
     const { BackTop } = FloatButton;
     const navigate = useNavigate();
 
+    const [authorized, setAuthorized] = useState(false);
+    const [editable, setEditable] = useState(false);
     const [meals, setMeals] = useState([]);
     const [filtered, setFiltered] = useState([]);
 
@@ -32,6 +33,10 @@ export default function Category(props) {
             navigate(`${pathname}?search_meal=${str}`);
         }
     };
+
+    useEffect(() => {
+        checkToken(setAuthorized);
+    }, []);
 
     useEffect(() => {
         setFiltered(
@@ -60,9 +65,9 @@ export default function Category(props) {
 
     return (
         <div className="category-page-block">
-            <Title highlighted={name} description={description} />
+            <Title highlighted={name} description={description} authorized={authorized} setAuthorized={setAuthorized} editable={editable} setEditable={setEditable}/>
             <Search cb={handleSearch} name="search meal..." />
-            {!meals.length ? <Preloader /> : <MealsList meals={filtered} />}
+            {!meals.length ? <Preloader /> : <MealsList meals={filtered} authorized={authorized} setAuthorized={setAuthorized} editable={editable}/>}
             <BackButton name="Back to categories" />
             <BackTop className="backtop" />
         </div>

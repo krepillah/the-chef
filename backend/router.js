@@ -113,6 +113,42 @@ router.post('/categories/new', async (req, res) => {
   }
 });
 
+router.put('/categories/:name/edit', async (req, res) => {
+  const { name } = req.params;
+  const token = req.headers.authorization?.split(' ')[1];
+
+  if (!token) {
+    return res.status(401).json({ message: 'Authorization token is missing' });
+  }
+
+  try {
+    const { data: user, error: authError } = await supabase.auth.getUser(token);
+
+    if (authError || !user) {
+      return res.status(401).json({ message: 'Invalid token', error: authError.message });
+    }
+
+    const {data, error } = await supabase 
+      .from('categories')
+      .update(req.body)
+      .eq('strCategory', name)
+      .select();
+
+    if (error) {
+      return res.status(400).json({ message: 'Error updating category', error: error.message });
+      
+    }
+
+    return res.status(200).json({
+      message: 'Category updated successfully',
+      category: data[0],
+    });
+  } catch (error) {
+    console.error('Error updating category:', error.message);
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+})
+
 router.get('/categories/:name', async (req, res) => {
   const { name } = req.params;
 
@@ -202,6 +238,38 @@ router.post('/meal/new', async (req, res) => {
   }
 })
 
+router.delete('/meal/:id/delete', async(req, res) => {
+  const {id} = req.params;
+  const token = req.headers.authorization?.split(' ')[1];
+
+  try {
+    const { data: user, error: authError } = await supabase.auth.getUser(token);
+
+    if (authError || !user) {
+      return res.status(401).json({ message: 'Invalid token', error: authError.message });
+    }
+
+    const {data, error } = await supabase 
+      .from('meals')
+      .delete()
+      .eq('idMeal', id)
+      .select();
+
+    if (error) {
+      return res.status(400).json({ message: 'Error deleting meal', error: error.message });
+      
+    }
+
+    return res.status(200).json({
+      message: 'Meal deleted successfully',
+      category: data[0],
+    });
+  } catch (error) {
+    console.error('Error deleting meal:', error.message);
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+})
+
 router.get('/meal/:id', async (req, res) => {
   const {id} = req.params;
 
@@ -211,8 +279,20 @@ router.get('/meal/:id', async (req, res) => {
         .select('*')
         .eq('idMeal', id)
 
+
     if (mealError) {
         return res.status(400).json({ error: 'Category not found' });
+    }
+
+    if (meal && Array.isArray(meal)) {
+      meal.forEach(mealItem => {
+        // Удаляем поля с пустыми значениями (например, 'null', '' и т.п.)
+        for (const key in mealItem) {
+          if (mealItem[key] === "null" || mealItem[key] === "" || mealItem[key] === null) {
+            delete mealItem[key];  // Удаляем поле
+          }
+        }
+      });
     }
 
     res.json({ meal: meal });
@@ -220,11 +300,5 @@ router.get('/meal/:id', async (req, res) => {
       res.status(500).json({ error: 'Internal server error' });
   }
 })
-
-router.put('/meal/:id/update')
-router.put('/categories/:name/update')
-
-router.delete('/categories/:name/delete')
-router.delete('/meal/:id/delete')
 
 export default router;

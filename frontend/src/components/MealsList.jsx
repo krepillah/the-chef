@@ -2,7 +2,7 @@ import { Row } from "antd";
 import Meal from "./Meal";
 
 export default function MealsList(props) {
-    const { meals, handleMealRemoval = Function.prototype } = props;
+    const { meals, handleMealRemoval = Function.prototype, authorized, setAuthorized, editable } = props;
 
     return (
         <div className="meals-list">
@@ -12,6 +12,9 @@ export default function MealsList(props) {
                         key={el.idMeal}
                         {...el}
                         handleMealRemoval={handleMealRemoval}
+                        authorized={authorized}
+                        setAuthorized={setAuthorized}
+                        editable={editable}
                     />
                 ))}
             </Row>

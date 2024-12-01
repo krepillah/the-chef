@@ -2,39 +2,17 @@ import { useState, useEffect } from "react"
 import AuthForm from "../components/AuthForm"
 import Title from "../components/Title"
 import AdminPanel from "../components/AdminPanel";
+import { checkToken } from "../api";
 
 export default function Admin({catalog}) {
-    const [authorzsed, setAuthorized] = useState(false);
+    const [authorized, setAuthorized] = useState(false);
 
     useEffect(() => {
-        const token = sessionStorage.getItem('token');
-        
-        if (token) {
-            fetch(`${process.env.REACT_APP_SERVER_URL}/verify-token`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-            })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('Token validation failed');
-                }
-                return response.json();
-            })
-            .then((data) => {
-                setAuthorized(true); 
-            })
-            .catch((error) => {
-                console.error('Token validation failed:', error);
-                sessionStorage.removeItem('token');
-            });
-        }
+        checkToken(setAuthorized);
     }, []);
 
    return (
-        (!authorzsed)?(
+        (!authorized)?(
             <>
                 <Title
                     highlighted="Log in"

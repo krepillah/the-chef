@@ -89,6 +89,17 @@ export default function HeaderBlock(props) {
             ),
             icon: <SettingOutlined style={{ color: 'white' }} />,
         },
+        {
+            label: (
+                <Link
+                    to="/admin"
+                    className="header-menu-item"
+                >
+                    Admin
+                </Link>
+            ),
+            key: 'about',
+        },
     ];
 
     return (

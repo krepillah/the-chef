@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Form, Input, Button, Space, Select } from 'antd';
 import { MinusOutlined, PlusOutlined } from '@ant-design/icons';
 
@@ -6,6 +7,7 @@ export default function AddMealForm({ setAuthorized, catalog }) {
     const [ingredientCount, setIngredientCount] = useState(5);
     const { Item } = Form;
     const { Option } = Select;
+    const navigate = useNavigate();
 
     const addIngredient = () => {
         setIngredientCount(ingredientCount + 1);
@@ -63,6 +65,9 @@ export default function AddMealForm({ setAuthorized, catalog }) {
             if (!response.ok) {
                 if(response.status === 401){
                     setAuthorized(false);
+                    if(token){
+                        navigate('/admin');
+                    }
                 }
                 throw new Error('Network response was not ok');
             }

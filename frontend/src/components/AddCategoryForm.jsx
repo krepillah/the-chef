@@ -1,7 +1,9 @@
 import { Form, Input, Button } from "antd"
+import { useNavigate } from "react-router-dom";
 
 export default function AddCategoryForm ({setAuthorized}) {
     const {Item} = Form;
+    const navigate = useNavigate();
 
     const onFinish = (values) => {
         const token = sessionStorage.getItem("token");
@@ -22,6 +24,9 @@ export default function AddCategoryForm ({setAuthorized}) {
             if (!response.ok) {
                 if(response.status === 401){
                     setAuthorized(false);
+                    if(token){
+                        navigate('/admin');
+                    }
                 }
                 throw new Error('Network response was not ok');
             }
