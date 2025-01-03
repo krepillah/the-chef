@@ -1,5 +1,4 @@
-import { Row, Col, Form, Input, Button, Switch, Typography } from "antd";
-import { useState } from "react";
+import { Row, Col, Switch, Typography } from "antd";
 import {  CheckOutlined, CloseOutlined  } from '@ant-design/icons';
 import EditCategoryForm from "./EditCategoryForm";
 

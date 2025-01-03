@@ -5,6 +5,8 @@ const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_API
 
 const router = new Router();
 
+// ------------------------------ Авторизация ------------------------------
+
 router.post('/login', async(req, res) => {
   const { email, password } = req.body;
 
@@ -29,6 +31,8 @@ router.post('/login', async(req, res) => {
   }
 })
 
+// ------------------------------ Проверка токена ------------------------------
+
 router.post('/verify-token', async (req, res) => {
   const token = req.headers.authorization?.split(' ')[1];
 
@@ -49,6 +53,8 @@ router.post('/verify-token', async (req, res) => {
     return res.status(500).json({ message: 'Server error', error: error.message });
   }
 });
+
+// ------------------------------ Получение категорий ------------------------------
 
 router.get('/categories', async (req, res) => {
   try {
@@ -71,6 +77,8 @@ router.get('/categories', async (req, res) => {
     res.status(500).json({ error: 'Ошибка сервера при получении категорий' });
   }
 });
+
+// ------------------------------ Добавление категории ------------------------------
 
 router.post('/categories/new', async (req, res) => {
   const { strCategory, strCategoryThumb, strCategoryDescription } = req.body;
@@ -113,6 +121,8 @@ router.post('/categories/new', async (req, res) => {
   }
 });
 
+// ------------------------------ Изменение категории ------------------------------
+
 router.put('/categories/:name/edit', async (req, res) => {
   const { name } = req.params;
   const token = req.headers.authorization?.split(' ')[1];
@@ -149,6 +159,8 @@ router.put('/categories/:name/edit', async (req, res) => {
   }
 })
 
+// ------------------------------ Получение категории по названию ------------------------------
+
 router.get('/categories/:name', async (req, res) => {
   const { name } = req.params;
 
@@ -184,6 +196,8 @@ router.get('/categories/:name', async (req, res) => {
   }
 });
 
+// ------------------------------ Получение случайного блюда ------------------------------
+
 router.get('/meal/random', async (req, res) => {
   try {
       const { data, error } = await supabase
@@ -203,6 +217,8 @@ router.get('/meal/random', async (req, res) => {
       res.status(500).json({ error: 'Ошибка сервера при получении случайного блюда' });
   }
 });
+
+// ------------------------------ Добавление блюда ------------------------------
 
 router.post('/meal/new', async (req, res) => {
   const token = req.headers.authorization?.split(' ')[1];
@@ -238,6 +254,8 @@ router.post('/meal/new', async (req, res) => {
   }
 })
 
+// ------------------------------ Удаление определенного блюда ------------------------------
+
 router.delete('/meal/:id/delete', async(req, res) => {
   const {id} = req.params;
   const token = req.headers.authorization?.split(' ')[1];
@@ -269,6 +287,8 @@ router.delete('/meal/:id/delete', async(req, res) => {
     res.status(500).json({ message: 'Server error', error: error.message });
   }
 })
+
+// ------------------------------ Получение блюда по айди ------------------------------
 
 router.get('/meal/:id', async (req, res) => {
   const {id} = req.params;
